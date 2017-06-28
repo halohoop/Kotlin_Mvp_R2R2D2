@@ -91,7 +91,6 @@ class Main1Activity : BaseAct(), IMain1Views, Main1Adapter.OnItemClickListener {
             return
         }
         bigUser = user
-        ll_big.visibility = View.VISIBLE
         Glide.with(this).load(user.avatar_url).into(user_avatar_big)
         user_name_big.text = user.name
         showCount++
@@ -104,7 +103,6 @@ class Main1Activity : BaseAct(), IMain1Views, Main1Adapter.OnItemClickListener {
             return
         }
         smallUser = user
-        ll_small.visibility = View.VISIBLE
         user_name_small.text = user.name
         Glide.with(this).load(user.avatar_url).into(user_avatar_small)
         showCount++
@@ -113,18 +111,46 @@ class Main1Activity : BaseAct(), IMain1Views, Main1Adapter.OnItemClickListener {
 
     fun checkShowCount() {
         if (showCount >= 2) {
-            try {
-                val bigFollowers = Integer.valueOf(bigUser?.followers)
-                val smallFollowers = Integer.valueOf(smallUser?.followers)
-                tv_compare.visibility = View.VISIBLE
-                tickerView.visibility = View.VISIBLE
-                tv_compare.text = getString(R.string.compare_str)
-                tickerView.setText("" + (bigFollowers - smallFollowers))
+//            try {
+//                val bigFollowers = Integer.valueOf(bigUser?.followers)
+//                val smallFollowers = Integer.valueOf(smallUser?.followers)
+//                tv_compare.visibility = View.VISIBLE
+//                tickerView.visibility = View.VISIBLE
+//                tv_compare.text = getString(R.string.compare_str)
+//                tickerView.setText("" + (bigFollowers - smallFollowers))
+//            } catch (e: NumberFormatException) {
+//                tv_compare.visibility = View.INVISIBLE
+//                tickerView.visibility = View.INVISIBLE
+//                toast("Github的Api接口请求次数过多，没有做缓存，\n抱歉，请明天再来试试吧")
+//            }
+
+            //------以上代码改成以下，利用try 和 catch都是表达式的特性-----------
+
+            tv_compare.visibility = View.VISIBLE
+            tickerView.visibility = View.VISIBLE
+            var noteMid = "Github的Api接口请求次数过多"
+            val bigFollowers = try {
+                ll_big.visibility = View.VISIBLE
+                val bigFollowersCount = Integer.valueOf(bigUser?.followers)
+                bigFollowersCount
             } catch (e: NumberFormatException) {
-                tv_compare.visibility = View.INVISIBLE
-                tickerView.visibility = View.INVISIBLE
-                toast("Github的Api接口请求次数过多，没有做缓存，\n抱歉，请明天再来试试吧")
+                toast("Github的Api接口请求次数过多，没有做缓存，\n抱歉，请稍后再试_big")
+                0
             }
+            val smallFollowers = try {
+                ll_small.visibility = View.VISIBLE
+                val smallFollowersCount = Integer.valueOf(smallUser?.followers)
+                noteMid = getString(R.string.compare_str)
+                smallFollowersCount
+            } catch (e: NumberFormatException) {
+                toast("Github的Api接口请求次数过多，没有做缓存，\n抱歉，请稍后再试_small")
+                0
+            }
+            val delta = bigFollowers - smallFollowers
+            tv_compare.text = noteMid
+            tickerView.setText("" + delta)
+            //----------------------------------------------
+
             showCount = 0
             stopLoading()
         }
