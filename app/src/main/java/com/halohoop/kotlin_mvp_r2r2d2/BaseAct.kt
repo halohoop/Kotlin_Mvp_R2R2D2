@@ -33,6 +33,7 @@ abstract class BaseAct : AppCompatActivity() {
         if (progressDialog === null) {
             progressDialog = indeterminateProgressDialog ("正在加载..." )
 //            progressDialog?.show()//不需要因为上面创建的时候就show
+            progressDialog?.setCanceledOnTouchOutside(false)//让其不能点击外部消失
         } else {
             progressDialog?.show()
         }

@@ -113,12 +113,18 @@ class Main1Activity : BaseAct(), IMain1Views, Main1Adapter.OnItemClickListener {
 
     fun checkShowCount() {
         if (showCount >= 2) {
-            tv_compare.visibility = View.VISIBLE
-            tickerView.visibility = View.VISIBLE
-            tv_compare.text = getString(R.string.compare_str)
-            val bigFollowers = Integer.valueOf(bigUser?.followers)
-            val smallFollowers = Integer.valueOf(smallUser?.followers)
-            tickerView.setText("" + (bigFollowers - smallFollowers))
+            try {
+                val bigFollowers = Integer.valueOf(bigUser?.followers)
+                val smallFollowers = Integer.valueOf(smallUser?.followers)
+                tv_compare.visibility = View.VISIBLE
+                tickerView.visibility = View.VISIBLE
+                tv_compare.text = getString(R.string.compare_str)
+                tickerView.setText("" + (bigFollowers - smallFollowers))
+            } catch (e: NumberFormatException) {
+                tv_compare.visibility = View.INVISIBLE
+                tickerView.visibility = View.INVISIBLE
+                toast("Github的Api接口请求次数过多，没有做缓存，\n抱歉，请明天再来试试吧")
+            }
             showCount = 0
             stopLoading()
         }
