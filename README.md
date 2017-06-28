@@ -4,6 +4,9 @@
 
 ![demo0](demo0.gif)
 
+* try
+[Donwload APK](http://halohoop.com/halohoop_custom_datas/meals-kotlin_mvp_retrofit2_rxjava2_dagger2_demo/app-release.apk)
+
 ## 概述
 
 * **Demo的功能是显示，自己的Github 和 大神的Github 之间相差多少个Followers.**
