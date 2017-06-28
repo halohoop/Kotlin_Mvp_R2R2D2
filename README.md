@@ -6,6 +6,7 @@
 
 ## 概述
 
+* **Demo的功能是显示，自己的Github 和 大神的Github 之间相差多少个Followers.**
 * 三个接口:
 	* 1.~~https://api.github.com/search/users?q={id}~~
 	* 2.[http://halohoop.com/halohoop_custom_datas/meals-kotlin_mvp_retrofit2_rxjava2_dagger2_demo/user1.json](http://halohoop.com/halohoop_custom_datas/meals-kotlin_mvp_retrofit2_rxjava2_dagger2_demo/user1.json)
@@ -15,6 +16,18 @@
 * 使用Dagger2注入对象；
 * 整体架构使用MVP；
 * P层使用RxJava2辅助过度连接M层和V层；
+
+## Use Android Studio Version
+* 3.0 Canary 4
+
+## Thanks for
+
+* [https://github.com/grantland/android-autofittextview](https://github.com/grantland/android-autofittextview)
+* [https://github.com/robinhood/ticker](https://github.com/robinhood/ticker)
+
+## More Detail
+
+* See [http://halohoop.com/2017/06/27/meals-kotlin_mvp_retrofit2_rxjava2_dagger2_demo/](http://halohoop.com/2017/06/27/meals-kotlin_mvp_retrofit2_rxjava2_dagger2_demo/)
 
 ## License
 
