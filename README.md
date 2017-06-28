@@ -5,7 +5,7 @@
 ![demo0](demo0.gif)
 
 * try
-[Donwload APK](http://halohoop.com/halohoop_custom_datas/meals-kotlin_mvp_retrofit2_rxjava2_dagger2_demo/app-release.apk)
+[Donwload APK](https://github.com/halohoop/Kotlin_Mvp_R2R2D2/releases/download/v1.0/app-release_v1.0.apk)
 
 ## 概述
 
